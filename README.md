@@ -1,6 +1,6 @@
 # Old School - Family Memories Website
 
-![Website Banner](home.jpg) <!-- Use one of your homeX.jpg images as banner -->
+![Website Banner](imgs/home.jpg) <!-- Use one of your homeX.jpg images as banner -->
 
 A nostalgic digital platform for families to share memories, photos, recipes, and stories.
 
