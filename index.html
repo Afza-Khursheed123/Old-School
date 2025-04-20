@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Old School</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Homemade+Apple&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+   
+</head>
+<body class=" bg-gradient-custom min-h-screen flex items-center justify-center " style=" background-color: #9D8189;  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 20%, rgba(255, 202, 212, 1) 100%);"> 
+
+    <section class="w-full max-w-6xl h-[70%]">
+        <div class="bg-white rounded-xl shadow-xl overflow-hidden flex flex-col h-[70%] lg:flex-row">
+         <div class="lg:w-1/2">
+                <img src="imgs/homee.jpg" alt="Login Image" class="w-full h-full object-cover">
+            </div>
+            
+            <div class="lg:w-1/2 p-8 sm:p-12 flex flex-col items-center justify-center">
+                <h2 class="text-3xl font-bold mb-8" style="color: #9D8189;">Enter Code</h2>
+                
+                <form onsubmit="login(event)" class="w-full max-w-md space-y-6">
+                    <div class="flex items-center border-2 border-gray-300 rounded-full px-4 py-3 w-full" style="border-color: #9D8189;">
+                        <i class="fa-solid fa-lock mr-3" style="color: #9D8189;"></i>
+                        <input type="password" id="password" placeholder="CODE PLEASE" 
+                               class="w-full focus:outline-none text-lg">
+                    </div>
+                    
+                    <button type="submit" 
+                            class="w-full py-3 rounded-full text-white font-semibold text-lg transition-colors duration-300"
+                            style="background-color: #ea98a3;"
+                            onmouseover="this.style.backgroundColor='#9D8189'" 
+                            onmouseout="this.style.backgroundColor='#ea98a3'">
+                        Login
+                    </button>
+                </form>
+            </div>
+        </div>
+        <footer class="p-4 mt-10 text-center bottom-0  " style="color: #9D8189;">
+            © 2025 OldSchool Memories | Made with ❤️ for Family
+          </footer>
+    </section>
+   
+    <script src="app.js"></script>
+</body>
+</html>

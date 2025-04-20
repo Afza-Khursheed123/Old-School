@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: 'Roboto';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #FFCAD4;
+    background: linear-gradient(43deg, rgba(255, 202, 212, 1) 0%, rgba(255, 229, 217, 1) 100%);
+}
+
+section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#main {
+    background-color: white;
+    height: fit-content;
+    width: 80%;
+    height: fit-content;
+    display: flex;
+    display: flex;
+    box-shadow: -1px -1px 24px 2px rgba(157, 129, 137, 0.75);
+    -webkit-box-shadow: -1px -1px 24px 2px rgba(157, 129, 137, 0.75);
+    -moz-box-shadow: -1px -1px 24px 2px rgba(157, 129, 137, 0.75);
+}
+
+#loginImg {
+    width: 60%;
+}
+
+form {
+    padding: 3%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    background-color: white;
+}
+
+h1 {
+    text-align: center;
+}
+
+i {
+    color: #9D8189;
+    margin-right: 15px;
+}
+
+input {
+    border: none;
+}
+
+input:focus{
+    outline: none;
+}
+
+.input {
+    border: 2px solid black;
+    padding: 2%;
+    width: 60%;
+    border-radius: 30px;
+    padding: 15px;
+    font-size: large;
+}
+
+button{
+    border: none;
+    background-color: #F4ACB7;
+    padding: 10px;
+    padding: 2%;
+    width: 50%;
+    border-radius: 30px;
+    padding: 15px;
+    
+}
+
+button:hover{
+    background-color: #D8E2DC;
+    font-weight: bold;
+}

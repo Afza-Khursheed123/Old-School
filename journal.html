@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Journal — Memories Together</title>
+  <link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Homemade+Apple&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .bg-vintage {
+      background: linear-gradient(135deg, #FFFFFF 20%, #FFE5E9 100%);
+    }
+    .nav-bg {
+      background-color: #F8EDEB;
+    }
+    .btn-primary {
+      background-color: #9D8189;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #7D636B;
+    }
+    .btn-secondary {
+      background-color: #ea98a3;
+      transition: all 0.3s ease;
+    }
+    .btn-secondary:hover {
+      background-color: #D87F8A;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center bg-vintage font-sans pb-8">
+
+<!-- Navigation -->
+<nav class="sticky top-0 w-full z-50 nav-bg shadow-md">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+      <div class="flex items-center">
+        <a href="index.html" class="flex items-center">
+          <span class="text-2xl font-semibold text-[#5A3E47]" style="font-family: 'Homemade Apple', cursive;">
+            Old School
+          </span>
+        </a>
+      </div>
+      
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="home.html" class="text-[#5A3E47] hover:text-[#9D8189] px-3 py-2 font-medium">Home</a>
+        <a href="gallery.html" class="text-[#5A3E47] hover:text-[#9D8189] px-3 py-2 font-medium">Gallery</a>
+        <a href="recipes.html" class="text-[#5A3E47] hover:text-[#9D8189] px-3 py-2 font-medium">Recipes</a>
+        <a href="journal.html" class="text-[#9D8189] font-bold px-3 py-2 font-medium">Journal</a>
+        <a href="contact.html" class="text-[#5A3E47] hover:text-[#9D8189] px-3 py-2 font-medium">Contact</a>
+        
+     
+      </div>
+      
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex items-center">
+        <button id="menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-[#5A3E47] hover:text-[#9D8189] focus:outline-none">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Mobile Menu -->
+  <div class="md:hidden hidden" id="mobile-menu">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <a href="home.html" class="text-[#5A3E47] hover:text-[#9D8189] block px-3 py-2 font-medium">Home</a>
+      <a href="gallery.html" class="text-[#5A3E47] hover:text-[#9D8189] block px-3 py-2 font-medium">Gallery</a>
+      <a href="recipes.html" class="text-[#5A3E47] hover:text-[#9D8189] block px-3 py-2 font-medium">Recipes</a>
+      <a href="journal.html" class="bg-[#F8EDEB] text-[#9D8189] font-bold block px-3 py-2 ">Journal</a>
+      <a href="contact.html" class="text-[#5A3E47] hover:text-[#9D8189] block px-3 py-2 font-medium">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main class="flex-1 w-full px-4 sm:px-6 lg:px-8 py-6 max-w-4xl">
+  <header class="text-center mb-8">
+    <h1 class="text-4xl sm:text-5xl font-bold text-[#9D8189] drop-shadow-md"style="font-family: 'Homemade Apple', cursive;">Family Journal 📓</h1>
+    <p class="text-lg text-[#B48A92] mt-4">Preserve sweet memories & share stories 💌</p>
+  </header>
+
+  <!-- Add New Entry Section -->
+  <section class="w-full bg-white rounded-2xl p-6 shadow-lg mb-10 border border-[#E8C7C7]">
+    <h2 class="text-2xl font-semibold text-[#9D8189] mb-4">Add New Memory 🧸</h2>
+    
+    <div class="flex flex-col gap-4">
+      <div>
+        <label class="block text-[#9D8189] font-medium mb-1">Select Date</label>
+        <input id="journalDate" type="date" class="w-full p-3 rounded-lg border border-[#E8C7C7] focus:ring-2 focus:ring-[#9D8189] focus:border-transparent" />
+      </div>
+
+      <div>
+        <label class="block text-[#9D8189] font-medium mb-1">Write Your Entry</label>
+        <textarea id="journalContent" rows="5" class="w-full p-3 border border-[#E8C7C7] rounded-lg focus:ring-2 focus:ring-[#9D8189] focus:border-transparent" placeholder="Today, I want to remember..."></textarea>
+      </div>
+
+      <button onclick="addEntry()" class="btn-primary text-white font-semibold rounded-full px-6 py-3 self-start mt-2 w-full sm:w-auto">
+        ➕ Add Entry
+      </button>
+    </div>
+  </section>
+
+  <section id="entriesContainer" class="w-full space-y-6">
+  </section>
+</main>
+<footer class="p-4 text-center " style="color: #9D8189;">
+  © 2025 OldSchool Memories | Made with ❤️ for Family
+</footer>
+<script>
+let entries = [];
+
+document.addEventListener('DOMContentLoaded', function() {
+  const savedEntries = localStorage.getItem('familyJournalEntries');
+  if (savedEntries) {
+    entries = JSON.parse(savedEntries);
+    renderEntries();
+  }
+  
+  // Mobile menu toggle
+  const menuButton = document.getElementById('menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  menuButton.addEventListener('click', function() {
+    mobileMenu.classList.toggle('hidden');
+  });
+});
+
+function addEntry() {
+  const date = document.getElementById('journalDate').value;
+  const content = document.getElementById('journalContent').value.trim();
+
+  if (!date || !content) {
+    alert('📢 Please fill in both date and your memory!');
+    return;
+  }
+
+  const newEntry = { 
+    id: Date.now(), 
+    date: formatDate(date), 
+    content, 
+    comments: [] 
+  };
+  
+  entries.push(newEntry);
+  saveEntries();
+  renderEntries();
+
+  document.getElementById('journalDate').value = '';
+  document.getElementById('journalContent').value = '';
+}
+
+function formatDate(dateString) {
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  return new Date(dateString).toLocaleDateString(undefined, options);
+}
+
+function deleteEntry(id) {
+  if (confirm("Are you sure you want to delete this memory?")) {
+    entries = entries.filter(entry => entry.id !== id);
+    saveEntries();
+    renderEntries();
+  }
+}
+
+function addComment(id) {
+  const commentInput = document.getElementById(`comment-${id}`);
+  const commentText = commentInput.value.trim();
+
+  if (commentText) {
+    const entry = entries.find(entry => entry.id === id);
+    entry.comments.push(commentText);
+    saveEntries();
+    renderEntries();
+    commentInput.value = '';
+  }
+}
+
+function saveEntries() {
+  localStorage.setItem('familyJournalEntries', JSON.stringify(entries));
+}
+
+function renderEntries() {
+  const container = document.getElementById('entriesContainer');
+  container.innerHTML = '';
+  
+  if (entries.length === 0) {
+    container.innerHTML = `
+      <div class="text-center py-10">
+        <p class="text-[#9D8189] text-lg">No entries yet. Add your first memory!</p>
+      </div>
+    `;
+    return;
+  }
+
+  entries.sort((a, b) => new Date(b.date) - new Date(a.date)).forEach(entry => {
+    const entryDiv = document.createElement('div');
+    entryDiv.className = "bg-white p-5 rounded-2xl shadow-md border border-[#E8C7C7]";
+
+    entryDiv.innerHTML = `
+      <div class="flex justify-between items-center mb-3">
+        <h3 class="text-lg font-bold text-[#9D8189]">${entry.date}</h3>
+        <button onclick="deleteEntry(${entry.id})" class="text-[#9D8189] hover:text-[#7D636B] text-xl transition">🗑️</button>
+      </div>
+      <p class="text-[#5A3E47] mb-4 whitespace-pre-line">${entry.content}</p>
+
+      <div class="mt-4 pt-3 border-t border-[#F3E1E1]">
+        <h4 class="font-semibold text-[#9D8189] mb-3">💬 Comments (${entry.comments.length})</h4>
+        <div class="space-y-2 mb-3">
+          ${entry.comments.map(c => `
+            <div class="flex items-start gap-2">
+              <span class="text-[#9D8189] mt-1">•</span>
+              <p class="text-sm text-[#5A3E47] bg-[#F8EDEB] rounded-lg px-3 py-2 flex-1">${c}</p>
+            </div>
+          `).join('')}
+        </div>
+        <div class="flex gap-2">
+          <input id="comment-${entry.id}" 
+                 class="flex-1 p-2 border border-[#E8C7C7] rounded-lg focus:ring-2 focus:ring-[#9D8189] focus:border-transparent" 
+                 placeholder="Add your comment..." />
+          <button onclick="addComment(${entry.id})" 
+                  class="btn-secondary text-white px-4 py-2 rounded-lg transition">
+            Post
+          </button>
+        </div>
+      </div>
+    `;
+    container.appendChild(entryDiv);
+  });
+}
+</script>
+</body>
+</html>

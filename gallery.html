@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - OldSchool</title>
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Homemade+Apple&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap">
+  
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  
+  <style>
+    a:hover {
+      color: #ea98a3 !important;
+    }
+
+    button:hover {
+      background-color: #e27b8b !important;
+    }
+  </style>
+</head>
+
+<body class=" min-h-screen flex flex-col items-center justify-start mb-4 font-sans" style=" background-color: #9D8189;    background: linear-gradient(135deg, rgba(255, 255, 255, 1) 20%, rgba(255, 202, 212, 1) 100%);"> 
+ <nav class="sticky top-0 w-full z-50 "  style=" background-color: #D8E2DC;">
+    <div class="max-w-screen-xl mx-auto p-4 flex flex-wrap items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-3">
+        <span class="text-2xl font-semibold text-gray-800" style="font-family: 'Homemade Apple', cursive;">
+          Old School
+        </span>
+      </a>
+  
+      <button id="menu-button" type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-600 rounded-lg md:hidden hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400"
+        aria-controls="navbar" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+  
+      <div class="hidden w-full md:flex md:w-auto" id="navbar">
+        <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 text-gray-700">
+          <li><a href="home.html" class="block py-2 px-4 hover:text-blue-700 font-serif">Home</a></li>
+          <li><a href="gallery.html" class="block py-2 px-4 hover:text-blue-700 font-serif">Gallery</a></li>
+          <li><a href="recipes.html" class="block py-2 px-4 hover:text-blue-700 font-serif">Recipes</a></li>
+          <li><a href="journal.html" class="block py-2 px-4 hover:text-blue-700 font-serif">Journal</a></li>
+          <li><a href="contact.html" class="block py-2 px-4 hover:text-blue-700 font-serif">Contact</a></li>
+        </ul>
+      </div>
+  
+     
+    </div>
+  </nav>
+  
+  <header class="text-center mt-8 mb-6 px-4">
+    <h1 class="text-4xl md:text-5xl font-bold " style="color: #9D8189;font-family: 'Homemade Apple', cursive;">Family Photo Gallery📸</h1>
+  </header>
+
+  <div class="max-w-4xl mx-auto px-4 mb-10">
+    <div class=" p-6 rounded-xl shadow-lg flex flex-col md:flex-row items-center justify-center gap-4" style="background-color: #9D8189;">
+      <input type="file" id="imageInput" accept="image/*" multiple
+             class="block w-full text-sm  file:mr-4 py-2 px-4 rounded-full  file:text-sm file:font-semibold file:text-white bg-cyan-700 hover:bg-cyan-900"  />
+
+      <input type="text" id="captionInput" placeholder="Enter Caption"
+             class="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500" />
+
+      <button onclick="uploadPhotos()"
+              class=" px-6 py-2 rounded-full hover:bg-amber-800 transition" style="background-color: white;">
+        Upload
+      </button>
+    </div>
+  </div>
+
+  <section class="max-w-6xl mx-auto px-4 ">
+    <h2 class="text-2xl font-semibold mb-4 text-center md:text-left">Latest Uploads</h2>
+    <div id="gallery" class="grid grid-cols-2 md:grid-cols-4 gap-6 justify-items-center"></div>
+  </section>
+
+  <div id="slideshow" class="fixed inset-0  items-center justify-center flex  hidden flex-col  z-50" style=" background-color: #9D8189;    background: linear-gradient(135deg, rgba(255, 255, 255, 1) 20%, rgba(255, 202, 212, 1) 100%);">
+    <img id="slideImage" src="" class="max-h-[80vh] rounded-lg mb-6 shadow-2xl" alt="Slideshow Image">
+    <div class="flex gap-4">
+      <button onclick="prevSlide()" class=" px-4 py-2 rounded-lg text-white hover:bg-amber-700" style="background-color: #9D8189;">Previous</button>
+      <button onclick="nextSlide()" class=" px-4 py-2 rounded-lg text-white hover:bg-amber-700" style="background-color: #9D8189;">Next</button>
+      <button onclick="closeSlideshow()" class="bg-red-500 px-4 py-2 rounded-lg text-white hover:bg-red-600">Close</button>
+    </div>
+  </div>
+  <footer class="p-4 text-center " style="color: #9D8189;">
+    © 2025 OldSchool Memories | Made with ❤️ for Family
+  </footer>
+   
+  <script>
+    let photos = [];
+    let currentSlide = 0;
+
+    const preloadedImages = [
+      {src: 'imgs/home1.jpeg', caption: 'Family gathering 2023'},
+      {src: 'imgs/home2.jpg', caption: 'Summer vacation'},
+      {src: 'imgs/home3.jpeg', caption: 'Birthday celebration'},
+      {src: 'imgs/home4.jpeg', caption: 'Holiday memories'},
+      {src: 'imgs/home5.jpeg', caption: 'Weekend picnic'},
+      {src: 'imgs/home6.jpeg', caption: 'Anniversary dinner'},
+      {src: 'imgs/home7.jpeg', caption: 'Family portrait'}
+    ];
+
+    window.onload = function () {
+      const saved = localStorage.getItem('familyPhotos');
+      if (saved) {
+        photos = JSON.parse(saved);
+      } else {
+        photos = [...preloadedImages];
+        saveToLocal();
+      }
+      displayGallery();
+    };
+
+    function uploadPhotos() {
+      const files = document.getElementById('imageInput').files;
+      const caption = document.getElementById('captionInput').value.trim();
+      if (!files.length) return;
+
+      for (let file of files) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          photos.unshift({src: e.target.result, caption: caption || 'New memory'}); // Add new photos at beginning
+          saveToLocal();
+          displayGallery();
+        };
+        reader.readAsDataURL(file);
+      }
+
+      document.getElementById('captionInput').value = '';
+      document.getElementById('imageInput').value = '';
+    }
+
+    function displayGallery() {
+      const gallery = document.getElementById('gallery');
+      gallery.innerHTML = '';
+      
+      photos.forEach((photo, index) => {
+        const div = document.createElement('div');
+        div.className = 'bg-white rounded-xl overflow-hidden cursor-pointer transform hover:scale-105 transition-all shadow-md';
+        div.innerHTML = `
+          <img src="${photo.src}" alt="Family Photo" class="w-full h-40 object-cover" onclick="openSlideshow(${index})">
+          <p class="p-3 text-sm text-amber-900">${photo.caption}</p>
+        `;
+        gallery.appendChild(div);
+      });
+    }
+
+    function saveToLocal() {
+      localStorage.setItem('familyPhotos', JSON.stringify(photos));
+    }
+
+    function openSlideshow(index) {
+      currentSlide = index;
+      document.getElementById('slideImage').src = photos[index].src;
+      document.getElementById('slideshow').classList.remove('hidden');
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % photos.length;
+      document.getElementById('slideImage').src = photos[currentSlide].src;
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + photos.length) % photos.length;
+      document.getElementById('slideImage').src = photos[currentSlide].src;
+    }
+
+    function closeSlideshow() {
+      document.getElementById('slideshow').classList.add('hidden');
+    }
+  </script>
+<script src="/scripts/navbartoggle.js"></script>
+
+</body>
+</html>
+
